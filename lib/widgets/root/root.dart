@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_list/widgets/food/food_list.dart';
 import 'package:flutter_food_list/widgets/home/home.dart';
 
 class Root extends StatelessWidget {
@@ -22,7 +23,11 @@ class Root extends StatelessWidget {
                     ),
                     button: TextStyle(color: Colors.white),
                   ))),
-      home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        '/category-food': (context) => FoodList(),
+      },
     );
   }
 }

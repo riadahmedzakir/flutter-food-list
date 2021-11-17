@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
+import './../../models/category.dart';
 
 class CategoryItem extends StatelessWidget {
-  final String title;
-  final Color color;
+  final Category _category;
 
-  CategoryItem(this.title, this.color);
+  CategoryItem(this._category);
+
+  void selectCategory(BuildContext context) {
+    // Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+    //   return Food(_category);
+    // }));
+
+    Navigator.of(context).pushNamed(
+      '/category-food',
+      arguments: {
+        'id': _category.id,
+        'title': _category.title,
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            color.withOpacity(0.7),
-            color,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+    return InkWell(
+      onTap: () => selectCategory(context),
+      splashColor: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              _category.color.withOpacity(0.7),
+              _category.color,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(15),
         ),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        child: Text(
+          _category.title,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
