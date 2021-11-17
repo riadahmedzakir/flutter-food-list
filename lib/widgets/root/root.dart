@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_food_list/home/home.dart';
+import 'package:flutter_food_list/widgets/home/home.dart';
 
 class Root extends StatelessWidget {
   @override
@@ -10,14 +10,16 @@ class Root extends StatelessWidget {
       title: 'Foods',
       theme: ThemeData(
           primarySwatch: Colors.cyan,
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
           errorColor: Colors.red,
           fontFamily: 'Quicksand',
           appBarTheme: AppBarTheme(
               textTheme: ThemeData.light().textTheme.copyWith(
                     headline6: TextStyle(
-                        fontFamily: 'OpenSans',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                      fontFamily: 'OpenSans',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                     button: TextStyle(color: Colors.white),
                   ))),
       home: Home(),

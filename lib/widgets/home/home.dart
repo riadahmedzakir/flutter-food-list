@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_list/widgets/categories/category_list.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -8,11 +9,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Expense planner'),
-      ),
-      body: SingleChildScrollView(),
-    );
+    return CategoryList();
   }
 }
