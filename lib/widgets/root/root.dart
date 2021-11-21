@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import './../food/food_details.dart';
 import './../food/food_list.dart';
 import './../home/home.dart';
-import './../settings/settings.dart';
+import '../settings/filters.dart';
 
 class Root extends StatelessWidget {
   @override
@@ -31,7 +31,7 @@ class Root extends StatelessWidget {
         '/': (context) => Home(),
         '/category-food': (context) => FoodList(),
         '/food-details': (context) => FoodDetails(),
-        '/settings': (context) => Settings()
+        '/settings': (context) => Filters()
       },
       onUnknownRoute: (settings) => MaterialPageRoute(builder: (ctx) => Home()),
     );

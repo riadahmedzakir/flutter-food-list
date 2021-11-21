@@ -41,7 +41,7 @@ class CustomDrawer extends StatelessWidget {
           _buildListTitle('Meals', Icons.restaurant, () {
             Navigator.of(context).pushReplacementNamed('/');
           }),
-          _buildListTitle('Settings', Icons.settings, () {
+          _buildListTitle('Filters', Icons.settings, () {
             Navigator.of(context).pushReplacementNamed('/settings');
           })
         ],

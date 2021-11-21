@@ -22,10 +22,10 @@ class FoodDetails extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(10),
       ),
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(10),
       height: 150,
-      width: 300,
+      width: double.infinity,
       child: child,
     );
   }
@@ -86,7 +86,7 @@ class FoodDetails extends StatelessWidget {
             )
           ],
         ),
-      ),
+      )
     );
   }
 }
