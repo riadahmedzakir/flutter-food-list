@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_food_list/widgets/food/food_list.dart';
-import 'package:flutter_food_list/widgets/home/home.dart';
+
+import './../food/food_details.dart';
+import './../food/food_list.dart';
+import './../home/home.dart';
 
 class Root extends StatelessWidget {
   @override
@@ -27,7 +29,9 @@ class Root extends StatelessWidget {
       routes: {
         '/': (context) => Home(),
         '/category-food': (context) => FoodList(),
+        '/food-details': (context) => FoodDetails()
       },
+      onUnknownRoute: (settings) => MaterialPageRoute(builder: (ctx) => Home()),
     );
   }
 }
