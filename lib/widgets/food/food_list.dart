@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_food_list/models/food.dart';
 import 'package:flutter_food_list/widgets/food/food_item.dart';
-import './../../constants/food_dummy_data.dart';
 
 class FoodList extends StatelessWidget {
+  final List<Food> _foodlist;
+
+  FoodList(this._foodlist);
+
   @override
   Widget build(BuildContext context) {
     final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, String>;
 
-    final foodList = DUMMY_FOODS
+    final foodList = _foodlist
         .where((food) => food.categories.contains(routeArgs['id']))
         .toList();
 
