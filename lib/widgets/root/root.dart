@@ -22,13 +22,14 @@ class _RootState extends State<Root> {
     'vegetarian': false
   };
 
-  List<Food> foodList = DUMMY_FOODS;
+  List<Food> _foodList = DUMMY_FOODS;
+  List<Food> _favouriteFoods = [];
 
   void _setFilters(Map<String, bool> filter) {
     setState(() {
       _filter = filter;
 
-      foodList = DUMMY_FOODS.where((food) {
+      _foodList = DUMMY_FOODS.where((food) {
         if (_filter['gluten']! && !food.isGlutenFree) {
           return false;
         }
@@ -48,6 +49,26 @@ class _RootState extends State<Root> {
         return true;
       }).toList();
     });
+  }
+
+  void _toggleFavourite(String id) {
+    final existingIndex =
+        _favouriteFoods.indexWhere((element) => element.id == id);
+
+    if (existingIndex >= 0) {
+      setState(() {
+        _favouriteFoods.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favouriteFoods
+            .add(DUMMY_FOODS.firstWhere((element) => element.id == id));
+      });
+    }
+  }
+
+  bool _isFavorite(String id) {
+    return _favouriteFoods.any((food) => food.id == id);
   }
 
   @override
@@ -70,12 +91,14 @@ class _RootState extends State<Root> {
                   ))),
       initialRoute: '/',
       routes: {
-        '/': (context) => Home(),
-        '/category-food': (context) => FoodList(foodList),
-        '/food-details': (context) => FoodDetails(),
+        '/': (context) => Home(_favouriteFoods),
+        '/category-food': (context) => FoodList(_foodList),
+        '/food-details': (context) =>
+            FoodDetails(_toggleFavourite, _isFavorite),
         '/settings': (context) => Filters(_filter, _setFilters)
       },
-      onUnknownRoute: (settings) => MaterialPageRoute(builder: (ctx) => Home()),
+      onUnknownRoute: (settings) =>
+          MaterialPageRoute(builder: (ctx) => Home(_favouriteFoods)),
     );
   }
 }
